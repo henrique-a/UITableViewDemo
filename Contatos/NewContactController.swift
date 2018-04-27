@@ -15,12 +15,20 @@ class NewContactController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var phone: UITextField!
     
+    
+    @IBOutlet weak var getImage: UIButton!
+    
     var delegate: NewContactDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.view.bringSubview(toFront: getImage)
+        
+        profile.layer.masksToBounds = false
+        profile.layer.cornerRadius = profile.frame.size.width/2
+        profile.clipsToBounds = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +73,7 @@ class NewContactController: UIViewController, UIImagePickerControllerDelegate, U
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         profile.image = image
         picker.dismiss(animated: true, completion: nil)
+        getImage.removeFromSuperview()
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

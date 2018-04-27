@@ -25,6 +25,7 @@ class ContactsViewController: UIViewController, NewContactDelegate {
         
         tableView.delegate = self
         tableView.dataSource = self
+       
 
         // Do any additional setup after loading the view.
     }
